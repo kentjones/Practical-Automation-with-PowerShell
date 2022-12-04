@@ -1,5 +1,6 @@
 ﻿# Listing 2 - Deleting Archived Files
 Function Remove-ArchivedFiles {
+    ##
     [CmdletBinding()]
     [OutputType()]
     param(

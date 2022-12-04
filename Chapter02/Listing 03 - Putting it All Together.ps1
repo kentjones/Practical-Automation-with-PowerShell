@@ -1,5 +1,4 @@
-﻿# Listing 3 - Putting it All Together
-[CmdletBinding()]
+﻿[CmdletBinding()]
 [OutputType()]
 param(
     [Parameter(Mandatory = $true)]

@@ -1,5 +1,4 @@
-﻿# Listing 5 - New-ModuleTemplate
-Function New-ModuleTemplate {
+﻿Function New-ModuleTemplate {
     [CmdletBinding()]
     [OutputType()]
     param(
@@ -14,9 +13,11 @@ Function New-ModuleTemplate {
         [Parameter(Mandatory = $false)]
         [string[]]$Functions
     )
-    $ModulePath = Join-Path .\ "$($ModuleName)\$($ModuleVersion)"
+
+    $ModulePath = Join-Path -Path "$($env:POWERSHELL_MODULE_HOME)" -ChildPath "$($ModuleName)\$($ModuleVersion)"
     # Creates a folder with the same name as the module
     New-Item -Path $ModulePath -ItemType Directory
+    
     Set-Location $ModulePath
     # Creates the public folder to store your ps1 scripts
     New-Item -Path .\Public -ItemType Directory
@@ -51,14 +52,13 @@ $module = @{
     # The name of your module
     ModuleName    = 'FileCleanupTools'
     # The version of your module
-    ModuleVersion = "1.0.0.0"
+    ModuleVersion = "1.0.0"
     # Your name
-    Author        = "YourNameHere"
+    Author        = "nite.coder@kentjones.xyz"
     # The minimum PowerShell version this module supports
     PSVersion     = '7.0'
     # The functions to create blank files for in the Public folder
-    Functions     =  'Remove-ArchivedFiles',
-                     'Set-ArchiveFilePath'
+    Functions     = 'Remove-Files', 'Set-ArchiveFilePath'
 }
 # Execute the function to create the new module
 New-ModuleTemplate @module
